@@ -1,8 +1,6 @@
 require('@dotenvx/dotenvx').config();
 
 import test, { expect } from '@playwright/test';
-import { resolve } from 'path';
-import { setTimeout } from 'timers/promises';
 
 test.describe('Login actions', () => {
   test.beforeEach(async ({ page }) => {
