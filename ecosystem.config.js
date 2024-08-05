@@ -19,7 +19,7 @@ module.exports = {
       user: 'SSH_USERNAME',
       host: 'SSH_HOSTMACHINE',
       ssh_options: 'ForwardAgent=yes',
-      ref: 'origin/master',
+      ref: 'origin/main',
       repo: 'GIT_REPOSITORY',
       path: 'DESTINATION_PATH',
       'pre-deploy-local': '',
