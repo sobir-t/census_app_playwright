@@ -16,12 +16,12 @@ module.exports = {
   deploy: {
     production: {
       key: process.env.SSH_KEY,
-      user: 'SSH_USERNAME',
-      host: 'SSH_HOSTMACHINE',
+      user: process.env.SSH_USERNAME,
+      host: process.env.SSH_HOSTMACHINE,
       ssh_options: 'ForwardAgent=yes',
       ref: 'origin/main',
-      repo: 'GIT_REPOSITORY',
-      path: 'DESTINATION_PATH',
+      repo: process.env.GIT_REPOSITORY,
+      path: process.env.DESTINATION_PATH,
       'pre-deploy-local': '',
       'post-deploy':
         'source ~/.nvm/nvm.sh && npm install && pm2 reload ecosystem.config.js --env production',
