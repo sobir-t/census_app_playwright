@@ -2,7 +2,9 @@
   "name": "census_app_playwright",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "regression": "npx playwright test --project chromium"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,6 +21,8 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.6.4"
+    "@dotenvx/dotenvx": "^1.6.4",
+    "date-fns": "^3.6.0",
+    "postgres": "^3.4.4"
   }
 }
