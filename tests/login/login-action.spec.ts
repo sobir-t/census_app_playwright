@@ -1,6 +1,6 @@
-require('@dotenvx/dotenvx').config();
-
 import test, { expect } from '@playwright/test';
+
+const { TEST_USER_EMAIL, TEST_USER_PASSWORD } = process.env;
 
 test.describe('Login actions', () => {
   test.beforeEach(async ({ page }) => {
@@ -41,7 +41,7 @@ test.describe('Login actions', () => {
   });
 
   test('Invalid password credentials text error message', async ({ page }) => {
-    await page.locator('#email').fill(process.env.TEST_USER_EMAIL as string);
+    await page.locator('#email').fill(TEST_USER_EMAIL as string);
     await page.locator('#password').fill('666666');
     await page.locator('//button[.="Login"]').click();
     await expect(page.getByTestId('error-message')).toHaveText(
@@ -50,10 +50,8 @@ test.describe('Login actions', () => {
   });
 
   test('Successful login', async ({ page }) => {
-    await page.locator('#email').fill(process.env.TEST_USER_EMAIL as string);
-    await page
-      .locator('#password')
-      .fill(process.env.TEST_USER_PASSWORD as string);
+    await page.locator('#email').fill(TEST_USER_EMAIL as string);
+    await page.locator('#password').fill(TEST_USER_PASSWORD as string);
     await page.locator('//button[.="Login"]').click();
     await expect(page.locator('.text-destructive')).not.toBeVisible({
       timeout: 1000,

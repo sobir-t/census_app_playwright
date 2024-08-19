@@ -1,3 +1,5 @@
+require('dotenv').config({ path: '.env' });
+
 import { defineConfig, devices } from '@playwright/test';
 
 /**
