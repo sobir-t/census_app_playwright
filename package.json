@@ -9,8 +9,18 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.6.4",
+    "axios": "^1.7.7",
+    "date-fns": "^3.6.0",
+    "faker": "^5.5.3",
+    "fs": "^0.0.1-security",
+    "fs.promises.exists": "^1.1.4",
+    "postgres": "^3.4.4"
+  },
   "devDependencies": {
     "@playwright/test": "^1.45.3",
+    "@types/faker": "^5.5.3",
     "@types/node": "^22.1.0",
     "ts-node": "^10.9.2"
   },
@@ -19,10 +29,5 @@
     "tabWidth": 2,
     "semi": true,
     "singleQuote": true
-  },
-  "dependencies": {
-    "@dotenvx/dotenvx": "^1.6.4",
-    "date-fns": "^3.6.0",
-    "postgres": "^3.4.4"
   }
 }

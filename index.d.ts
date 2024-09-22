@@ -1,3 +1,22 @@
+export interface Obj {
+  [key: string]: any;
+}
+
+export type AVATAR =
+  | '/images/1.avif'
+  | '/images/2.avif'
+  | '/images/3.avif'
+  | '/images/4.avif'
+  | '/images/5.avif'
+  | '/images/6.avif'
+  | '/images/7.avif'
+  | '/images/8.avif'
+  | '/images/9.avif'
+  | '/images/10.avif'
+  | '/images/11.avif'
+  | '/images/12.avif'
+  | '/images/13.avif';
+
 export type HOME_TYPE = 'HOUSE' | 'APARTMENT' | 'MOBILE_HOME' | 'SHELTER';
 
 export type OWNERSHIP = 'MORTGAGE' | 'OWN' | 'RENT' | 'FREE_LIVING';
@@ -152,6 +171,7 @@ export interface Test {
   testTitle: string;
   email: string;
   password: string;
+  image: AVATAR;
   householdWithLienholder: HouseholdWithLienholder | null;
   recordsWithRelationship: RecordWithRelationship[] | null;
 }
