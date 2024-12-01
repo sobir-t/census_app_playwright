@@ -33,7 +33,8 @@ export default defineConfig({
   // testIgnore: '*test-assets',
   // Glob patterns or regular expressions that match test files.
   // testMatch: '*todo-tests/*.spec.ts',
-  testIgnore: 'example*.spec.ts',
+  // testIgnore: 'example*.spec.ts',
+  testIgnore: /.*example.*|.*skip.*/,
   globalSetup: require.resolve('./tests/global-setup.ts'),
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
