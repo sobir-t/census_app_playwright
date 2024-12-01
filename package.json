@@ -3,24 +3,25 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "regression": "npx playwright test --project chromium"
+    "regression": "npx playwright test --project chromium",
+    "regression:mobile": "npx playwright test --project 'Mobile Chrome'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.6.4",
+    "@dotenvx/dotenvx": "^1.26.0",
     "date-fns": "^3.6.0",
     "faker": "^5.5.3",
     "fs": "^0.0.1-security",
     "fs.promises.exists": "^1.1.4",
-    "postgres": "^3.4.4"
+    "postgres": "^3.4.5"
   },
   "devDependencies": {
-    "@playwright/test": "^1.45.3",
+    "@playwright/test": "^1.49.0",
     "@types/faker": "^5.5.3",
-    "@types/node": "^22.1.0",
+    "@types/node": "^22.10.1",
     "ts-node": "^10.9.2"
   },
   "prettier": {
