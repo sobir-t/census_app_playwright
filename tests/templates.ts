@@ -15,7 +15,7 @@ import {
   otherStay,
   ownerships,
   race,
-} from '../utils/helper/constValues';
+} from '../utils/helper/enums';
 
 export const tests1: Test[] = [
   {

@@ -1,67 +1,66 @@
-import test, { expect } from '@playwright/test';
+import { MenuItem, NavButton } from '../pom/nav-bar.layout';
+import test, { expect } from '../pom/pom';
 
-test.describe('Login page', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/');
-    await page.getByTestId('avatar-button').click();
-    await page.getByTestId('menu-item-Sign-in').click();
-    await page.waitForLoadState('load');
+test.describe('Login page @UI', () => {
+  test.beforeEach(async ({ loginPage }) => {
+    await loginPage.goto('/');
+    await loginPage.$avatar.click();
+    await loginPage.getMenuItemOf('Sign in').click();
+    await loginPage.waitForPageLoaded();
   });
 
-  test('Title is "Census App | login"', async ({ page }) => {
-    await expect(page).toHaveTitle('Census App | Login', { timeout: 30000 });
+  test('Title is "Census App | login"', async ({ loginPage }) => {
+    await loginPage.validateTitleToBe('Census App | Login', { timeout: 30000 });
   });
 
   test.describe('Navbar validation', () => {
-    test('Logo is displayed', async ({ page }) => {
-      await expect(page.getByTestId('logo')).toBeVisible();
+    test('Logo is displayed', async ({ loginPage }) => {
+      await expect(loginPage.$logo).toBeVisible();
     });
 
-    const navButtons: string[] = ['About', 'Docs', 'Swagger'];
-    test(`Navbar buttons are [${navButtons}]`, async ({ page }) => {
-      await expect(
-        page.getByTestId('navbar-buttons').getByRole('link')
-      ).toHaveText(navButtons);
+    const navButtons: NavButton[] = ['About', 'Docs', 'Swagger'];
+    test(`loginPage buttons are [${navButtons}]`, async ({ loginPage }) => {
+      await expect(loginPage.$navButtons).toHaveText(navButtons);
     });
 
-    test('Notification bell is displayed', async ({ page }) => {
-      await expect(page.getByTestId('notification-bell')).toBeVisible();
+    test('Notification bell is displayed', async ({ loginPage }) => {
+      await expect(loginPage.$notificationBell).toBeVisible();
     });
 
-    test('Avatar button is displayed', async ({ page }) => {
-      await expect(page.getByTestId('avatar-button')).toBeVisible();
+    test('Avatar button is displayed', async ({ loginPage }) => {
+      await expect(loginPage.$avatar).toBeVisible();
     });
 
-    const menuItems: string[] = ['Sign in', 'Register'];
-    test(`Avatar menu items are [${menuItems}]`, async ({ page }) => {
-      await page.getByTestId('avatar-button').click();
-      await expect(page.locator('.user-menu-item > a')).toHaveText(menuItems);
+    const menuItems: MenuItem[] = ['Sign in', 'Register'];
+    test(`Avatar menu items are [${menuItems}]`, async ({ loginPage }) => {
+      await loginPage.$avatar.click();
+      await expect(loginPage.$menuItems).toHaveText(menuItems);
     });
   });
 
   test.describe('Login form', () => {
-    test('"Welcome back!" title is displayed', async ({ page }) => {
-      await expect(page.getByText('Welcome back!')).toBeVisible();
+    test('"Welcome back!" title is displayed', async ({ loginPage }) => {
+      await expect(loginPage.$welcomeTitle).toBeVisible();
     });
 
-    test('Email input box is displayed', async ({ page }) => {
-      await expect(page.locator('//label[.="Email"]')).toBeVisible();
-      await expect(page.locator('#email')).toBeVisible();
+    test('Email input box is displayed', async ({ loginPage }) => {
+      await expect(loginPage.$emailLabel).toBeVisible();
+      await expect(loginPage.$email).toBeVisible();
     });
 
-    test('Password input box is displayed', async ({ page }) => {
-      await expect(page.locator('//label[.="Password"]')).toBeVisible();
-      await expect(page.locator('#password')).toBeVisible();
+    test('Password input box is displayed', async ({ loginPage }) => {
+      await expect(loginPage.$passwordLabel).toBeVisible();
+      await expect(loginPage.$password).toBeVisible();
     });
 
-    test('"Login: button is displayed', async ({ page }) => {
-      await expect(page.locator('//button[.="Login"]')).toBeVisible();
+    test('"Login: button is displayed', async ({ loginPage }) => {
+      await expect(loginPage.$loginButton).toBeVisible();
     });
 
-    test(`"Don't have an account?" link is displayed`, async ({ page }) => {
-      await expect(
-        page.getByRole('link', { name: "Don't have an account?" })
-      ).toBeVisible();
+    test(`"Don't have an account?" link is displayed`, async ({
+      loginPage,
+    }) => {
+      await expect(loginPage.$createAccountLink).toBeVisible();
     });
   });
 });

@@ -9,7 +9,7 @@ import {
   saveNewHousehold,
   saveNewLienholder,
 } from '../utils/helper/api/household';
-import { lienholders } from '../utils/helper/constValues';
+import { lienholders } from '../utils/helper/enums';
 import { saveNewRecordWithRelationship } from '../utils/helper/api/record';
 import fsExists from 'fs.promises.exists';
 

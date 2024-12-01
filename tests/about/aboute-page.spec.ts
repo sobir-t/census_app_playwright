@@ -1,90 +1,89 @@
-import test, { expect } from '@playwright/test';
+import { MenuItem, NavButton } from '../pom/nav-bar.layout';
+import test, { expect } from '../pom/pom';
 
 test.describe('Base page', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+  test.beforeEach(async ({ aboutPage }) => {
+    await aboutPage.goto();
   });
 
-  test('Title is "Census App"', async ({ page }) => {
-    await expect(page).toHaveTitle(/Census App/);
+  test('Title is "Census App"', async ({ aboutPage }) => {
+    await aboutPage.validateTitleToBe('Census App');
   });
 
   test.describe('Navbar validation', () => {
-    test('Logo is displayed', async ({ page }) => {
-      await expect(page.getByTestId('logo')).toBeVisible();
+    test('Logo is displayed', async ({ aboutPage }) => {
+      await expect(aboutPage.$logo).toBeVisible();
     });
 
-    const navButtons: string[] = ['About', 'Docs', 'Swagger'];
-    test(`Navbar buttons are [${navButtons}]`, async ({ page }) => {
-      await expect(
-        page.getByTestId('navbar-buttons').getByRole('link')
-      ).toHaveText(navButtons);
+    const navButtons: NavButton[] = ['About', 'Docs', 'Swagger'];
+    test(`Navbar buttons are [${navButtons}]`, async ({ aboutPage }) => {
+      await expect(aboutPage.$navButtons).toHaveText(navButtons);
     });
 
-    test('Notification bell is displayed', async ({ page }) => {
-      await expect(page.getByTestId('notification-bell')).toBeVisible();
+    test('Notification bell is displayed', async ({ aboutPage }) => {
+      await expect(aboutPage.$notificationBell).toBeVisible();
     });
 
-    test('Avatar button is displayed', async ({ page }) => {
-      await expect(page.getByTestId('avatar-button')).toBeVisible();
+    test('Avatar button is displayed', async ({ aboutPage }) => {
+      await expect(aboutPage.$avatar).toBeVisible();
     });
 
-    const menuItems: string[] = ['Sign in', 'Register'];
-    test(`Avatar menu items are [${menuItems}]`, async ({ page }) => {
-      await page.getByTestId('avatar-button').click();
-      await expect(page.locator('.user-menu-item > a')).toHaveText(menuItems);
+    const menuItems: MenuItem[] = ['Sign in', 'Register'];
+    test(`Avatar menu items are [${menuItems}]`, async ({ aboutPage }) => {
+      await aboutPage.$avatar.click();
+      await expect(aboutPage.$menuItems).toHaveText(menuItems);
     });
   });
 
   test.describe('"About" page content validation', () => {
-    test('Default header title is "About', async ({ page }) => {
-      await expect(page.getByTestId('header-title')).toHaveText('About');
+    test('Default header title is "About', async ({ aboutPage }) => {
+      await expect(aboutPage.$headerTitle).toHaveText('About');
     });
 
-    test('Big logo is displayed', async ({ page }) => {
-      await expect(page.getByTestId('big-logo')).toBeVisible();
+    test('Big logo is displayed', async ({ aboutPage }) => {
+      await expect(aboutPage.$bigLogo).toBeVisible();
     });
 
     interface TextValidation {
       title: string;
-      text: string[];
+      texts: string[];
     }
     const tests: TextValidation[] = [
       {
         title: '"Welcome to Census Registration"',
-        text: ['Welcome to Census Registration'],
+        texts: ['Welcome to Census Registration'],
       },
       {
         title: 'App intention',
-        text: [
+        texts: [
           'This app is intended to be used by Quality Assurance Engineers for software testing training',
         ],
       },
       {
         title: 'Author responsibility',
-        text: [
+        texts: [
           'Author has no responsibility for any official or commercial usage',
           'You are using this app at your own risk',
         ],
       },
       {
         title: 'PII PHI warning',
-        text: [
+        texts: [
           'Please DO NOT save any PII (Personal Identifiable information)',
           'All information has to be of unreal people',
         ],
       },
       {
         title: 'Security information',
-        text: [
+        texts: [
           'This app has no any security protection for any information submitted',
         ],
       },
     ];
-    tests.forEach(({ title, text }) => {
-      test(`${title} title is displayed`, async ({ page }) => {
-        for await (const t of text) {
-          await expect(page.getByText(t)).toBeVisible();
+    tests.forEach(({ title, texts }) => {
+      test(`${title} title is displayed`, async ({ aboutPage }) => {
+        for await (const text of texts) {
+          await expect(aboutPage.getByText(text)).toBeVisible();
         }
       });
     });

@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import faker from 'faker';
 import Storage from './storage';
 
-import { alphabets, numbers, uiFormat, apiFormat, states } from './constValues';
+import { alphabets, numbers, uiFormat, apiFormat, states } from './enums';
 import { Obj } from '../../index';
 
 export const storage = new Storage();
