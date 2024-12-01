@@ -1,7 +1,7 @@
 import { MenuItem, NavButton } from '../pom/nav-bar.layout';
 import test, { expect } from '../pom/pom';
 
-test.describe('Login page @UI', () => {
+test.describe('Login page', { tag: ['@UI'] }, () => {
   test.beforeEach(async ({ loginPage }) => {
     await loginPage.goto('/');
     await loginPage.$avatar.click();

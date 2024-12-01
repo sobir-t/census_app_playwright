@@ -34,7 +34,7 @@ export default defineConfig({
   // Glob patterns or regular expressions that match test files.
   // testMatch: '*todo-tests/*.spec.ts',
   // testIgnore: 'example*.spec.ts',
-  testIgnore: /.*example.*|.*skip.*/,
+  testIgnore: ['example*.spec.ts', '*skip.ts'],
   globalSetup: require.resolve('./tests/global-setup.ts'),
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -66,25 +66,20 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Smoke',
-      testMatch: '*smoke*.spec.ts',
-      retries: 0,
-    },
-    {
       name: 'chromium',
-      testIgnore: '*mobile.spec.ts',
+      testIgnore: ['*mobile.spec.ts', 'example*.spec.ts', '*skip.ts'],
       use: { ...devices['Desktop Chrome'] },
     },
 
     {
       name: 'firefox',
-      testIgnore: '*mobile.spec.ts',
+      testIgnore: ['*mobile.spec.ts', 'example*.spec.ts', '*skip.ts'],
       use: { ...devices['Desktop Firefox'] },
     },
 
     {
       name: 'webkit',
-      testIgnore: '*mobile.spec.ts',
+      testIgnore: ['*mobile.spec.ts', 'example*.spec.ts', '*skip.ts'],
       use: { ...devices['Desktop Safari'] },
     },
 
@@ -92,23 +87,25 @@ export default defineConfig({
     {
       name: 'Mobile Chrome',
       testMatch: '*mobile.spec.ts',
+      testIgnore: ['example*.spec.ts', '*skip.ts'],
       use: { ...devices['Pixel 5'] },
     },
     {
       name: 'Mobile Safari',
       testMatch: '*mobile.spec.ts',
+      testIgnore: ['example*.spec.ts', '*skip.ts'],
       use: { ...devices['iPhone 12'] },
     },
 
     /* Test against branded browsers. */
     {
       name: 'Microsoft Edge',
-      testIgnore: '*mobile.spec.ts',
+      testIgnore: ['*mobile.spec.ts', 'example*.spec.ts', '*skip.ts'],
       use: { ...devices['Desktop Edge'], channel: 'msedge' },
     },
     {
       name: 'Google Chrome',
-      testIgnore: '*mobile.spec.ts',
+      testIgnore: ['*mobile.spec.ts', 'example*.spec.ts', '*skip.ts'],
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     },
   ],

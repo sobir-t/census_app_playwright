@@ -1,7 +1,7 @@
 import { MenuItem, NavButton } from '../pom/nav-bar.layout';
 import test, { expect } from '../pom/pom';
 
-test.describe('About page', () => {
+test.describe('About page', { tag: ['@UI', '@Mobile'] }, () => {
   test.beforeEach(async ({ aboutPage }) => {
     await aboutPage.goto();
   });
@@ -10,7 +10,7 @@ test.describe('About page', () => {
     await aboutPage.validateTitleToBe('Census App');
   });
 
-  test.describe('Navbar validation', () => {
+  test.describe('Navbar validation', { tag: ['@Smoke'] }, () => {
     test('Logo is displayed', async ({ aboutPage }) => {
       await expect(aboutPage.$logo).toBeVisible();
     });

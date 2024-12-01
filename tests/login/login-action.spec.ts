@@ -2,7 +2,7 @@ import test, { expect } from '../pom/pom';
 
 const { TEST_USER_EMAIL, TEST_USER_PASSWORD } = process.env;
 
-test.describe('Login actions @UI', () => {
+test.describe('Login actions', { tag: ['@UI', '@Smoke'] }, () => {
   test.beforeEach(async ({ loginPage }) => {
     await loginPage.goto('/');
     await loginPage.$avatar.click();

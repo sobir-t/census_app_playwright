@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "CICD": "npx playwright test --project chromium 'Mobile Chrome' --forbid-only",
+    "smoke": "npx playwright test --project chromium 'Mobile Chrome' --grep @Smoke --forbid-only",
     "regression": "npx playwright test --project chromium",
     "regression:mobile": "npx playwright test --project 'Mobile Chrome'"
   },
