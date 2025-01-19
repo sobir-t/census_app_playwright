@@ -1,5 +1,5 @@
 import { APIRequestContext, APIResponse } from '@playwright/test';
-import { HOME_TYPE, OWNERSHIP, STATE } from '../../..';
+import { HOME_TYPE, OWNERSHIP, STATE } from '@/types';
 
 export const getAllLienholders = async ({
   request,

@@ -1,16 +1,16 @@
 import { chromium, type FullConfig, expect } from '@playwright/test';
 import fs from 'fs';
-import { Household, Lienholder, Test } from '..';
-import { define, getRandom, parseObj } from '../utils/helper/valueGenerator';
+import { Household, Lienholder, Test } from '@/types';
+import { define, getRandom, parseObj } from '@/utils/helper/valueGenerator';
 import { tests1 } from './templates';
-import { login, registerNewUser } from '../utils/helper/api/auth';
+import { login, registerNewUser } from '@/utils/helper/api/auth';
 import {
   getAllLienholders,
   saveNewHousehold,
   saveNewLienholder,
-} from '../utils/helper/api/household';
-import { lienholders } from '../utils/helper/enums';
-import { saveNewRecordWithRelationship } from '../utils/helper/api/record';
+} from '@/utils/helper/api/household';
+import { lienholders } from '@/utils/helper/enums';
+import { saveNewRecordWithRelationship } from '@/utils/helper/api/record';
 import fsExists from 'fs.promises.exists';
 
 async function globalSetup(config: FullConfig) {

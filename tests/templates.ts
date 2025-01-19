@@ -7,7 +7,7 @@ import {
   RACE,
   STATE,
   Test,
-} from '..';
+} from '@/types';
 import {
   avatars,
   hispanic,

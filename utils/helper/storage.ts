@@ -1,4 +1,4 @@
-import { Obj } from '../../index';
+import { Obj } from '@/types';
 
 export default class Storage {
   storage: Obj;

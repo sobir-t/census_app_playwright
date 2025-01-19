@@ -1,4 +1,4 @@
-import test, { expect } from '../pom/pom';
+import test, { expect } from '@/tests/pom/pom';
 
 const { TEST_USER_EMAIL, TEST_USER_PASSWORD } = process.env;
 

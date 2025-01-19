@@ -7,7 +7,7 @@ import {
   RACE,
   RELATIONSHIP,
   STATE,
-} from '../..';
+} from '@/types';
 
 export const alphabets: string[] = [
   'a',

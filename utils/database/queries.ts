@@ -4,7 +4,7 @@ import {
   HouseholdWithLienholder,
   Lienholder,
   RecordWithRelationship,
-} from '../..';
+} from '@/types';
 
 export const getHouseholdByEmail = async (
   email: string

@@ -1,5 +1,5 @@
-import { MenuItem, NavButton } from '../pom/nav-bar.layout';
-import test, { expect } from '../pom/pom';
+import { MenuItem, NavButton } from '@/tests/pom/nav-bar.layout';
+import test, { expect } from '@/tests/pom/pom';
 
 test.describe('About page', { tag: ['@UI', '@Mobile'] }, () => {
   test.beforeEach(async ({ aboutPage }) => {

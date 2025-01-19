@@ -1,5 +1,5 @@
 import { APIRequestContext, APIResponse } from '@playwright/test';
-import { HISPANIC, OTHER_STAY, RACE, RELATIONSHIP } from '../../..';
+import { HISPANIC, OTHER_STAY, RACE, RELATIONSHIP } from '@/types';
 
 interface RecordProps {
   firstName: string;

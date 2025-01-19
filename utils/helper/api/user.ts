@@ -1,5 +1,5 @@
 import { APIRequestContext, APIResponse } from '@playwright/test';
-import { Obj } from '../../..';
+import { Obj } from '@/types';
 
 interface UserQueryParams extends Obj {
   id?: number;

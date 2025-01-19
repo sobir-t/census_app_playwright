@@ -1,5 +1,5 @@
 import { APIRequestContext, APIResponse } from '@playwright/test';
-import { AVATAR } from '../../..';
+import { AVATAR } from '@/types';
 
 interface RegisterProps {
   email: string;

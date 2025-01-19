@@ -1,15 +1,15 @@
 import { test, expect, Page, Locator } from '@playwright/test';
-import { Test } from '../..';
+import { Test } from '@/types';
 import { format } from 'date-fns';
-import { MenuItem, NavButton } from '../pom/nav-bar.layout';
-import { LoginPage } from '../pom/login.page';
-import { DashboardPage } from '../pom/dashboard.page';
+import { MenuItem, NavButton } from '@/tests/pom/nav-bar.layout';
+import { LoginPage } from '@/tests/pom/login.page';
+import { DashboardPage } from '@/tests/pom/dashboard.page';
 
 let page: Page;
 let loginPage: LoginPage;
 let dashboardPage: DashboardPage;
 
-const tests: Test[] = require('../fixtures/test1.json');
+const tests: Test[] = require('@/tests/fixtures/test1.json');
 
 tests.forEach((t) => {
   test.describe(`Dashboard page ${t.testTitle}`, { tag: ['@UI'] }, () => {
