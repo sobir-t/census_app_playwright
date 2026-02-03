@@ -18,7 +18,7 @@
     "faker": "^5.5.3",
     "fs": "^0.0.1-security",
     "fs.promises.exists": "^1.1.4",
-    "postgres": "^3.4.7"
+    "postgres": "^3.4.8"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
